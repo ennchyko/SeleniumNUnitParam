@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -15,14 +15,14 @@ namespace SeleniumNUnitParam
         [Test]
         public void GoogleTest()
         {
-	
-		    driver.get("http://www.google.com");
-            driver.findElement(By.name("q")).sendKeys("selftechy");
-		    driver.findElement(By.name("q")).submit();
-		    driver.findElement(By.name("btnG")).click();
-		    driver.findElement(By.partialLinkText("Selftechy.com")).click();
-	    }
-        
+            Driver.Navigate().GoToUrl("http://www.google.com");
+            Driver.FindElement(By.Name("q")).SendKeys("Selenium");
+            System.Threading.Thread.Sleep(5000);
+            Driver.FindElement(By.Name("btnG")).Click();
+            Assert.That(Driver.PageSource.Contains("Selenium"), Is.EqualTo(true),
+                                            "The text selenium doest not exist");
+
+        }
 
         [Test]
         public void ExecuteAutomationTest()
